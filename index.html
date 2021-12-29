@@ -72,11 +72,11 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <section id="about" class="about">
+    <section id="about"  class="about">
       <div class="container">
 
         <div class="row no-gutters">
-          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
+          <div style="background-image: url(me.jpg); min-height: 200px;" class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div>
           <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
             <div class="content d-flex flex-column justify-content-center">
               <h3> I'm a full stack developer </h3>
@@ -293,7 +293,7 @@
 
         <div class="section-title">
           <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>This is the recent work I done. you can look at the work I was done go and check it out</p>
         </div>
 
         <div class="row">
@@ -343,20 +343,20 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>feel free to contact me for responcive website.I ready serve better from my side .</p>
         </div>
 
         <div class="row">
 
           <div class="col-lg-4 col-md-4">
             <div class="contact-about">
-              <h3>Lonely</h3>
-              <p>Cras fermentum odio eu feugiat. Justo eget magna fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+              <h3>Afsal</h3>
+              <p>full stack developer</p>
               <div class="social-links">
-                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="https://twitter.com/AfsalAfzz7?t=nVfwmwX9h0HLWfqmf-Fi9Q&s=09" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="https://www.facebook.com/afsalafzzz/" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/afsal__offl/" class="instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/afsal-ka-a39b561b0" class="linkedin"><i class="bi bi-linkedin"></i></a>
               </div>
             </div>
           </div>
@@ -365,24 +365,24 @@
             <div class="info">
               <div class="d-flex align-items-center">
                 <i class="bi bi-geo-alt"></i>
-                <p>A108 Adam Street<br>New York, NY 535022</p>
+                <p>kerala<br>Thrissur, chelakkara</p>
               </div>
 
               <div class="d-flex align-items-center mt-4">
                 <i class="bi bi-envelope"></i>
-                <p>info@example.com</p>
+                <p>afsalafzz63@gmail.com</p>
               </div>
 
               <div class="d-flex align-items-center mt-4">
                 <i class="bi bi-phone"></i>
-                <p>+1 5589 55488 55s</p>
+                <p>+918136833754</p>
               </div>
 
             </div>
           </div>
 
           <div class="col-lg-5 col-md-8">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form  role="form" id="submit-form" class="email-form">
               <div class="form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
               </div>
@@ -390,10 +390,10 @@
                 <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
               </div>
               <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                <input type="number" class="form-control" name="subject" id="number" placeholder="phone number" required>
               </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
@@ -415,14 +415,14 @@
   <footer id="footer">
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Lonely</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>afsal</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-html-bootstrap-template-lonely/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://bootstrapmade.com/">afsal</a>
       </div>
     </div>
   </footer><!-- End  Footer -->
@@ -440,7 +440,34 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
+<script>
+  $("#submit-form").submit((e)=>{
+      e.preventDefault()
+      $.ajax({
+          url:"https://drive.google.com/file/d/1DPDiAokKgokaHL5BtO_0_3S9A6eETQVf/view?usp=sharing",
+          data:$("#submit-form").serialize(),
+          method:"post",
+          success:function (response){
+              alert("Form submitted successfully")
+              window.location.reload()
+              //window.location.href="https://google.com"
+          },
+          error:function (err){
+              alert("Something Error")
 
+          }
+      })
+  })
+  document.querySelector(".number").addEventListener("keypress",function(evt) {
+    if(evt.which!=8 && evt.which!=0 && evt.which<48|| evt.which>57){
+      evt.preventDefault()
+    }else if(document.getElementById("number").value.length==10){
+      evt.preventDefault()
+    }
+      
+    
+  })
+</script>
 </html>
