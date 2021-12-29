@@ -10,8 +10,10 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,500,500i,600,600i,700,700i&subset=cyrillic" rel="stylesheet">
@@ -382,25 +384,30 @@
           </div>
 
           <div class="col-lg-5 col-md-8">
-            <form  role="form" id="submit-form" class="email-form">
+            <form id="submit-form">
               <div class="form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" onkeyup="nameValidate()" required>
               </div>
+              <div id="errormsg"></div>
               <div class="form-group mt-3">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" onkeyup="emailValidate()">
               </div>
+              <div id="errormsg1"> </div>
               <div class="form-group mt-3">
-                <input type="number" class="form-control" name="subject" id="number" placeholder="phone number" required>
+                <input type="number" class="form-control" name="subject" id="number" placeholder="phone number" onkeyup="mobileValidate()">
               </div>
+              <div id="errormsg2"> </div>
               <div class="form-group mt-3">
-                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Message" required></textarea>
+                <textarea class="form-control" id="msg" name="message" rows="5" placeholder="Message" onkeyup="messageValidate()"></textarea>
               </div>
+              <div id="errormsg3"> </div>
               <div class="my-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
                 <div class="sent-message">Your message has been sent. Thank you!</div>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+              <div class="text-center"><button type="button" onclick="validate()">Send Message</button></div>
             </form>
           </div>
 
@@ -440,34 +447,103 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</body>
-<script>
-  $("#submit-form").submit((e)=>{
-      e.preventDefault()
-      $.ajax({
-          url:"https://drive.google.com/file/d/1DPDiAokKgokaHL5BtO_0_3S9A6eETQVf/view?usp=sharing",
-          data:$("#submit-form").serialize(),
-          method:"post",
-          success:function (response){
-              alert("Form submitted successfully")
-              window.location.reload()
-              //window.location.href="https://google.com"
-          },
-          error:function (err){
-              alert("Something Error")
 
-          }
-      })
-  })
-  document.querySelector(".number").addEventListener("keypress",function(evt) {
-    if(evt.which!=8 && evt.which!=0 && evt.which<48|| evt.which>57){
-      evt.preventDefault()
-    }else if(document.getElementById("number").value.length==10){
-      evt.preventDefault()
-    }
-      
-    
-  })
+<script>
+
+
+function validate(){
+
+if(nameValidate()==true && emailValidate()==true && mobileValidate()==true && messageValidate()==true){
+
+    $.ajax({
+        url:"https://script.google.com/macros/s/AKfycby1tou5YiObhuw6tC9lCUvLJ8L2t-6YZMgnNqIrdhlyjVQWb0IaZ4b1cL8dG-l91NJqQw/exec",
+        data:$("#submit-form").serialize(),
+        method:"post",
+        success:function (response){
+            alert("Form submitted successfully")
+            //window.location.reload()
+            //window.location.href="https://google.com"
+        },
+        error:function (err){
+            alert("Please enter the values")
+
+        }
+    })
+
+  }
+}
+
+
+function nameValidate(){
+  var varname = $('#name').val();
+  var pattern = /^[A-Za-z]+$/;
+
+  if(varname==" "){
+    $('#errormsg').html("Name is mandatory");
+    return false;
+  }else if(varname.match(pattern)){
+    $('#errormsg').html("");
+    return true;
+  }else{
+    $('#errormsg').html("Enter correct name");
+    return false;
+  }
+}
+
+function emailValidate(){
+  var varEmail = $('#email').val();
+  var emailPattern = /^[a-zA-Z0-9.!#$%&*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if(varEmail==""){
+    $('#errormsg1').html("Email is mandatory");
+    return false;
+  }else if(varEmail.match(emailPattern)){
+    $('#errormsg1').html("");
+    return true;
+  }else{
+    $('#errormsg1').html("Enter correct Email");
+    return false;
+  }
+
+}
+
+function mobileValidate(){
+  var varMobile = $('#number').val();
+  var mobilePattern = /^\d{10}$/;
+
+  if(varMobile==""){
+    $('#errormsg2').html("Contact number is mandatory");
+    return false;
+  }else if(varMobile.match(mobilePattern)){
+    $('#errormsg2').html("");
+    return true;
+  }
+  else if(varMobile.length<10 ||varMobile.length>=10){
+    $('#errormsg2').html("Number should be 10 digits");
+  }
+  else{
+    $('#errormsg2').html("Enter valid Contact number");
+    return false;
+  }
+}
+
+function messageValidate(){
+  var varMessage = $('#msg').val();
+
+  if(varMessage==""){
+    $('#errormsg3').html("Enter something please");
+    return false;
+  }else {
+    $('#errormsg3').html("");
+    return true;
+  }
+}
 </script>
+
+
+
+
+
+</body>
+
 </html>
