@@ -476,7 +476,7 @@ if(nameValidate()==true && emailValidate()==true && mobileValidate()==true && me
 
 function nameValidate(){
   var varname = $('#name').val();
-  var pattern = /^[A-Za-z]+$/;
+  var pattern = /[a-zA-Z\s]+/;
 
   if(varname==" "){
     $('#errormsg').html("Name is mandatory");
